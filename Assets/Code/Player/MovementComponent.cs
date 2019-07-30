@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets
+namespace Assets.Code.Player
 {
     public class MovementComponent : MonoBehaviour
     {
@@ -27,15 +27,19 @@ namespace Assets
 
         private void HandleOrientation()
         {
+            // We need to convert from screen space to world space for proper direction normal calculation
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+            // Normalized for Atan2 function to return correct angle
             var mouseDirection = new Vector2(
                 mousePosition.x - transform.position.x,
                 mousePosition.y - transform.position.y
             ).normalized;
 
+            //Converted to Degrees as atan2 returns Radians
             var mouseAngle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
-           
+
+            //Mouse angle on Z because 2D uses Z axis for rotation
             transform.rotation = Quaternion.Euler(0, 0, mouseAngle);
         }
     }
