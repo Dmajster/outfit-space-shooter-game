@@ -1,5 +1,4 @@
-﻿using Assets.Code.Enemy;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Code.Bullets
 {
@@ -15,13 +14,16 @@ namespace Assets.Code.Bullets
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            // Try and find if the object can be damaged
             var damageable = collision.gameObject.GetComponent<DamageComponent>();
 
+            // If it can't stop this method
             if (damageable == null)
             {
                 return;
             }
 
+            // Call damage deal method on collided game object
             damageable.DealDamage(Damage);
         }
     }

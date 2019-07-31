@@ -1,16 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Code
 {
     public class HealthComponent : MonoBehaviour
     {
-        [SerializeField]private float _startingHealth;
+        [SerializeField] private float _startingHealth;
 
-        [SerializeField]private float _health;
+        [SerializeField] private float _health;
+
+        public event EventHandler Died;
+
         public float Health
         {
             get => _health;
-            set => HealthChanged(value);
+            set => OnHealthChanged(value);
         }
 
         private void Start()
@@ -18,19 +22,22 @@ namespace Assets.Code
             Health = _startingHealth;
         }
 
-        private void HealthChanged(float value)
+        private void OnHealthChanged(float value)
         {
             _health = value;
 
-            if (_health < 0)
+            if (_health > 0)
             {
-                Die();
+                return;
             }
-        }
 
-        private void Die()
-        {
+            if (Died == null)
+            {
+                Debug.LogError("Died event handler is null.");
+                return;
+            }
 
+            Died(this, EventArgs.Empty);
         }
     }
 }
