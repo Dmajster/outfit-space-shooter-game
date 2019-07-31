@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Code.Player;
 using UnityEngine;
 
 namespace Assets.Code.Enemy
@@ -13,9 +14,22 @@ namespace Assets.Code.Enemy
         {
             _healthComponent = GetComponent<HealthComponent>();
             _healthComponent.Died += OnDeath;
+
+            PlayerManager.Instance.RoundRestarted += OnRoundRestarted;
+        }
+
+        private void OnDestroy()
+        {
+            _healthComponent.Died -= OnDeath;
+            PlayerManager.Instance.RoundRestarted -= OnRoundRestarted;
         }
 
         private void OnDeath(object sender, EventArgs e)
+        {
+            Destroy(gameObject);
+        }
+
+        private void OnRoundRestarted(object sender, EventArgs e)
         {
             Destroy(gameObject);
         }

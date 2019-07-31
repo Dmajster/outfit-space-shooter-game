@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Code.Player;
 using UnityEngine;
 
 namespace Assets.Code
@@ -19,7 +20,19 @@ namespace Assets.Code
 
         private void Start()
         {
+            SetInitialHealth();
+
+            PlayerManager.Instance.RoundRestarted += OnRoundRestarted;
+        }
+
+        private void SetInitialHealth()
+        {
             Health = _startingHealth;
+        }
+
+        private void OnRoundRestarted(object sender, EventArgs e)
+        {
+            SetInitialHealth();
         }
 
         private void OnHealthChanged(float value)

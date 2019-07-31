@@ -838,8 +838,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7940882177339058097, guid: 79c5e97a43cddb542b203df33d92d2f0,
         type: 3}
-      propertyPath: PreparationTime
-      value: 1
+      propertyPath: _levelOneObstaclesCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7940882177339058097, guid: 79c5e97a43cddb542b203df33d92d2f0,
+        type: 3}
+      propertyPath: Level
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7940882177339058097, guid: 79c5e97a43cddb542b203df33d92d2f0,
         type: 3}
@@ -848,8 +853,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7940882177339058097, guid: 79c5e97a43cddb542b203df33d92d2f0,
         type: 3}
-      propertyPath: _levelOneObstaclesCount
-      value: 15
+      propertyPath: PreparationTime
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79c5e97a43cddb542b203df33d92d2f0, type: 3}

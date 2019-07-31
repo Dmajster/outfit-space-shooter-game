@@ -46,11 +46,11 @@ MonoBehaviour:
   PreparationTime: 1
   PreparationStart: 0
   WaveStatus: 0
-  Level: 0
+  Level: 1
   ObstaclePrefab: {fileID: 6841866004654199648, guid: ac77a7078ebea7c4d8696b8ce064a1e1,
     type: 3}
   EnemyPrefab: {fileID: 2696137637998675951, guid: cecdbdf5beb8bf6459e2a0f5362606d4,
     type: 3}
-  _levelZeroObstaclesCount: 3
-  _levelOneObstaclesCount: 5
-  _levelOneEnemiesCount: 0
+  _levelZeroObstaclesCount: 10
+  _levelOneObstaclesCount: 0
+  _levelOneEnemiesCount: 5

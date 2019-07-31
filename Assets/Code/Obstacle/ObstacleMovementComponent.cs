@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Code.Player;
+using UnityEngine;
 
 namespace Assets.Code.Obstacle
 {
@@ -9,6 +10,8 @@ namespace Assets.Code.Obstacle
         public Vector2 MovementDirection;
 
         public float MovementVelocity;
+
+        public float Damage;
 
         public float MinAngularVelocity;
         public float MaxAngularVelocity;
@@ -39,6 +42,32 @@ namespace Assets.Code.Obstacle
             HandleIsInView();
             HandleTeleportation();
         }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            // Check if it's the player
+            if (collision.gameObject.GetComponent<PlayerComponent>() == null)
+            {
+                return;
+            }
+
+            Debug.Log("Collided with player!");
+
+            // Try and find if the object can be damaged
+            var damageable = collision.gameObject.GetComponent<DamageComponent>();
+
+            // If it can't stop this method
+            if (damageable == null)
+            {
+                return;
+            }
+
+            Debug.Log("Damaged player!");
+
+            // Call damage deal method on collided game object
+            damageable.DealDamage(Damage);
+        }
+
 
         private void HandleIsInView()
         {

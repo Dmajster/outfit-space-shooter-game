@@ -1,4 +1,7 @@
-﻿using Assets.Code.Obstacle;
+﻿using Assets.Code.Abstractions;
+using Assets.Code.Enemy;
+using Assets.Code.Obstacle;
+using Assets.Code.Player;
 using UnityEngine;
 
 namespace Assets.Code.Wave_System
@@ -18,11 +21,6 @@ namespace Assets.Code.Wave_System
 
         [Header("Level 1")] [SerializeField] private int _levelOneObstaclesCount;
         [SerializeField] private int _levelOneEnemiesCount;
-
-        private void Start()
-        {
-            Level = 0;
-        }
 
         private void FixedUpdate()
         {
@@ -44,6 +42,15 @@ namespace Assets.Code.Wave_System
                     StartPreparation();
                 }
             }
+        }
+
+        public void RestartRound()
+        {
+            // Decrement level so it sets us back to same level again
+            Level--;
+
+            // Start preparation again
+            StartPreparation();
         }
 
         private void StartPreparation()
@@ -125,15 +132,18 @@ namespace Assets.Code.Wave_System
             for (var i = 0; i < _levelOneObstaclesCount; i++)
             {
                 var position = GetRandomPositionInView();
+                var direction = GetRandomDirectionVector();
 
-                Instantiate(ObstaclePrefab, position, Quaternion.identity);
+                var obstacleGameObject = Instantiate(ObstaclePrefab, position, Quaternion.identity);
+                obstacleGameObject.GetComponent<ObstacleMovementComponent>().MovementDirection = direction;
             }
 
             for (var i = 0; i < _levelOneEnemiesCount; i++)
             {
                 var position = GetRandomPositionInView();
 
-                Instantiate(EnemyPrefab, position, Quaternion.identity);
+                var enemyGameObject = Instantiate(EnemyPrefab, position, Quaternion.identity);
+                enemyGameObject.GetComponent<EnemyMovementComponent>().TargetPosition = enemyGameObject.transform.position;
             }
         }
 
