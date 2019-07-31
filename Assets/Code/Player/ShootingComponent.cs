@@ -11,7 +11,7 @@ namespace Assets.Code.Player
         {
             if (Input.GetButtonDown("Shoot"))
             {
-                //Spawn a new bullet prefab at spawn location, rotation matches rotation of Player.
+                // Spawn a new bullet prefab at spawn location, rotation matches rotation of Player.
                 Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.Euler(transform.eulerAngles));
             }
         }

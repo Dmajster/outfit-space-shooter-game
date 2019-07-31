@@ -36,10 +36,10 @@ namespace Assets.Code.Player
                 mousePosition.y - transform.position.y
             ).normalized;
 
-            //Converted to Degrees as atan2 returns Radians
+            // Converted to Degrees as atan2 returns Radians
             var mouseAngle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
 
-            //Mouse angle on Z because 2D uses Z axis for rotation
+            // Mouse angle on Z because 2D uses Z axis for rotation
             transform.rotation = Quaternion.Euler(0, 0, mouseAngle);
         }
     }

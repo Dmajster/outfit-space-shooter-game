@@ -5,7 +5,7 @@ namespace Assets.Code.Enemy
 {
     [RequireComponent(typeof(HealthComponent))]
     [RequireComponent(typeof(DamageComponent))]
-    public class Enemy : MonoBehaviour
+    public class EnemyComponent : MonoBehaviour
     {
         private HealthComponent _healthComponent;
 

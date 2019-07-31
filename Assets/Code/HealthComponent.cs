@@ -33,6 +33,7 @@ namespace Assets.Code
 
             if (Died == null)
             {
+                // This shouldn't happen.
                 Debug.LogError("Died event handler is null.");
                 return;
             }

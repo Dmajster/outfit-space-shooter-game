@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Code.Obstacle;
+using UnityEngine;
 
 namespace Assets.Code.Wave_System
 {
@@ -92,27 +93,46 @@ namespace Assets.Code.Wave_System
             );
         }
 
+        protected Vector2 GetRandomDirectionVector()
+        {
+            // Pick a random angle to launch the meteor in
+            var angle = Random.Range(0, 360);
+
+            // Convert to radians because Mathf Cos/Sin use radians as input
+            var radianAngle = angle * Mathf.Deg2Rad;
+
+            // No need to normalize, since cos(a) + sin(a) = 1
+            return new Vector2(
+                Mathf.Cos(radianAngle),
+                Mathf.Sin(radianAngle)
+            );
+        }
+
         private void SpawnLevelZero()
         {
             for (var i = 0; i < _levelZeroObstaclesCount; i++)
             {
                 var position = GetRandomPositionInView();
+                var direction = GetRandomDirectionVector();
 
-                Instantiate(ObstaclePrefab, position, Quaternion.identity);
+                var obstacleGameObject = Instantiate(ObstaclePrefab, position, Quaternion.identity);
+                obstacleGameObject.GetComponent<ObstacleMovementComponent>().MovementDirection = direction;
             }
         }
 
         private void SpawnLevelOne()
         {
-            var position = Vector2.zero;
-
             for (var i = 0; i < _levelOneObstaclesCount; i++)
             {
+                var position = GetRandomPositionInView();
+
                 Instantiate(ObstaclePrefab, position, Quaternion.identity);
             }
 
             for (var i = 0; i < _levelOneEnemiesCount; i++)
             {
+                var position = GetRandomPositionInView();
+
                 Instantiate(EnemyPrefab, position, Quaternion.identity);
             }
         }

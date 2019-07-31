@@ -5,7 +5,7 @@ namespace Assets.Code.Obstacle
 {
     [RequireComponent(typeof(HealthComponent))]
     [RequireComponent(typeof(DamageComponent))]
-    public class Obstacle : MonoBehaviour
+    public class ObstacleComponent : MonoBehaviour
     {
         private HealthComponent _healthComponent;
 

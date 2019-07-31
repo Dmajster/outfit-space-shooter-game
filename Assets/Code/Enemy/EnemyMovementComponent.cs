@@ -9,6 +9,7 @@ namespace Assets.Code.Enemy
 
         private void Update()
         {
+            // Normalized so distance doesn't affect movement speed.
             var targetDirection = ((Vector3) TargetPosition - transform.position).normalized;
             transform.position += targetDirection * MovementSpeed * Time.deltaTime;
         }
