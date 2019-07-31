@@ -1,4 +1,5 @@
-﻿using Assets.Code.Player;
+﻿using Assets.Code.Managers;
+using Assets.Code.Player;
 using UnityEngine;
 
 namespace Assets.Code.Obstacle
@@ -51,8 +52,6 @@ namespace Assets.Code.Obstacle
                 return;
             }
 
-            Debug.Log("Collided with player!");
-
             // Try and find if the object can be damaged
             var damageable = collision.gameObject.GetComponent<DamageComponent>();
 
@@ -61,8 +60,6 @@ namespace Assets.Code.Obstacle
             {
                 return;
             }
-
-            Debug.Log("Damaged player!");
 
             // Call damage deal method on collided game object
             damageable.DealDamage(Damage);

@@ -1,10 +1,10 @@
 ﻿using Assets.Code.Abstractions;
 using Assets.Code.Enemy;
 using Assets.Code.Obstacle;
-using Assets.Code.Player;
+using Assets.Code.Wave_System;
 using UnityEngine;
 
-namespace Assets.Code.Wave_System
+namespace Assets.Code.Managers
 {
     public class WaveManager : Singleton<WaveManager>
     {

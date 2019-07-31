@@ -1,7 +1,7 @@
 ﻿using Assets.Code.Abstractions;
 using UnityEngine;
 
-namespace Assets.Code
+namespace Assets.Code.Managers
 {
     public class ViewManager : Singleton<ViewManager>
     {
