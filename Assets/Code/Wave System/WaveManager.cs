@@ -2,25 +2,20 @@
 
 namespace Assets.Code.Wave_System
 {
-    public class WaveSystem : MonoBehaviour
+    public class WaveManager : Singleton<WaveManager>
     {
-        [Header("Preparation time settings")]
-        public float PreparationTime;
+        [Header("Preparation time settings")] public float PreparationTime;
         [SerializeField] private float PreparationStart;
 
-        [Header("Wave settings")]
-        public WaveStatus WaveStatus;
+        [Header("Wave settings")] public WaveStatus WaveStatus;
         [SerializeField] private int Level;
-        
-        [Header("Prefabs")]
-        public GameObject ObstaclePrefab;
+
+        [Header("Prefabs")] public GameObject ObstaclePrefab;
         public GameObject EnemyPrefab;
 
-        [Header("Level 0")]
-        [SerializeField] private int _levelZeroObstaclesCount;
+        [Header("Level 0")] [SerializeField] private int _levelZeroObstaclesCount;
 
-        [Header("Level 1")]
-        [SerializeField] private int _levelOneObstaclesCount;
+        [Header("Level 1")] [SerializeField] private int _levelOneObstaclesCount;
         [SerializeField] private int _levelOneEnemiesCount;
 
         private void Start()
@@ -86,12 +81,23 @@ namespace Assets.Code.Wave_System
             Level++;
         }
 
+        protected Vector3 GetRandomPositionInView()
+        {
+            var view = ViewManager.Instance;
+
+            return new Vector3(
+                Random.Range(view.MinimumView.x, view.MaximumView.x),
+                Random.Range(view.MinimumView.y, view.MaximumView.y),
+                0
+            );
+        }
+
         private void SpawnLevelZero()
         {
-            var position = Vector2.zero;
-
             for (var i = 0; i < _levelZeroObstaclesCount; i++)
             {
+                var position = GetRandomPositionInView();
+
                 Instantiate(ObstaclePrefab, position, Quaternion.identity);
             }
         }
