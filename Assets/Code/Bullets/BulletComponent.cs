@@ -7,6 +7,13 @@ namespace Assets.Code.Bullets
         public float Damage;
         public float Speed;
 
+        public float BulletLifespan;
+
+        private void Start()
+        {
+            Destroy(gameObject, BulletLifespan);
+        }
+
         private void Update()
         {
             transform.position += transform.right * Speed * Time.deltaTime;
@@ -25,6 +32,8 @@ namespace Assets.Code.Bullets
 
             // Call damage deal method on collided game object
             damageable.DealDamage(Damage);
+
+            Destroy(gameObject);
         }
     }
 }

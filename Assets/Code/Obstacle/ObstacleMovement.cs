@@ -17,9 +17,13 @@ namespace Assets.Code.Obstacle
 
         private void Start()
         {
+            // pick a random angle to launch the meteor in
             var angle = Random.Range(0, 360);
+
+            // convert to radians because Mathf Cos/Sin use radians as input
             var radianAngle = angle * Mathf.Deg2Rad;
 
+            // Launch the projectile with velocity to avoid mass problems.
             _rigidbody.velocity = new Vector2(
                 Mathf.Cos(radianAngle),
                 Mathf.Sin(radianAngle)
