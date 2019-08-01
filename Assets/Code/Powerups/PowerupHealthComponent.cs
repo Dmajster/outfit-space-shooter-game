@@ -5,7 +5,7 @@ namespace Assets.Code.Powerups
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collision2D))]
-    public class PowerupComponent : MonoBehaviour
+    public class PowerupHealthComponent : MonoBehaviour
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {

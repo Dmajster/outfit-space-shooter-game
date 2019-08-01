@@ -25,16 +25,25 @@ namespace Assets.Code.Managers
             set => OnScoreChanged(value);
         }
 
+        public float Health => _player.HealthComponent.Health;
+
         public event EventHandler RoundRestarted;
         public event EventHandler ScoreChanged;
         public event EventHandler LivesChanged;
+        public event EventHandler HealthChanged;
 
-        public void Awake()
+        private void Awake()
         {
             LivesLeft = StartingAmountOfLives;
 
             _player = FindObjectOfType<PlayerComponent>();
+            
+        }
+
+        private void Start()
+        {
             _player.Died += OnDeath;
+            _player.HealthChanged += OnHealthChanged;
         }
 
         private void OnDeath(object sender, EventArgs e)
@@ -48,6 +57,12 @@ namespace Assets.Code.Managers
             RoundRestarted?.Invoke(this, EventArgs.Empty);
 
             WaveManager.Instance.RestartRound();
+        }
+
+        private void OnHealthChanged(object sender, EventArgs e)
+        {
+            Debug.Log("pm works");
+            HealthChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnScoreChanged(int value)

@@ -12,6 +12,7 @@ namespace Assets.Code
         [SerializeField] private float _health;
 
         public event EventHandler Died;
+        public event EventHandler HealthChanged;
 
         public float Health
         {
@@ -39,6 +40,8 @@ namespace Assets.Code
         private void OnHealthChanged(float value)
         {
             _health = value;
+
+            HealthChanged?.Invoke(this, EventArgs.Empty);
 
             if (_health > 0)
             {

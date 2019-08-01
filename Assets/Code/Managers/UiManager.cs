@@ -9,6 +9,8 @@ namespace Assets.Code.Managers
     public class UiManager : Singleton<UiManager>
     {
         public Text Score;
+        public Text Health;
+        public Text Wave;
 
         public RectTransform HeartParent;
         public GameObject HeartPrefab;
@@ -19,18 +21,32 @@ namespace Assets.Code.Managers
 
         private List<GameObject> _hearts = new List<GameObject>();
 
-        private void Awake()
+        private void Start()
         {
             PlayerManager.Instance.ScoreChanged += OnScoreChange;
             PlayerManager.Instance.LivesChanged += OnLivesChange;
+            PlayerManager.Instance.HealthChanged += OnHealthChange;
+            WaveManager.Instance.WaveChanged += OnWaveChange;
 
-            OnScoreChange(this, EventArgs.Empty);
+            OnScoreChange(this,EventArgs.Empty);
+            OnHealthChange(this, EventArgs.Empty);
             OnLivesChange(this, EventArgs.Empty);
+            OnWaveChange(this, EventArgs.Empty);
         }
 
         private void OnScoreChange(object sender, EventArgs e)
         {
             Score.text = $"Score: {PlayerManager.Instance.Score}";
+        }
+
+        private void OnHealthChange(object sender, EventArgs e)
+        {
+            Health.text = $"Health: {PlayerManager.Instance.Health}";
+        }
+
+        private void OnWaveChange(object sender, EventArgs e)
+        {
+            Wave.text = $"Wave: {WaveManager.Instance.Level}";
         }
 
         private void OnLivesChange(object sender, EventArgs e)

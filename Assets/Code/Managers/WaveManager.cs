@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Code.Abstractions;
 using Assets.Code.Wave_System;
 using UnityEngine;
@@ -11,13 +12,15 @@ namespace Assets.Code.Managers
         [SerializeField] private float _preparationStart;
 
         [Header("Wave settings")] public WaveStatus WaveStatus;
-        [SerializeField] private int _level;
+        public int Level;
 
         [SerializeField] private List<Wave> _waves = new List<Wave>()
         {
             new WaveAsteroids(),
             new WaveAsteroidsAndEnemies()
         };
+
+        public event EventHandler WaveChanged;
 
         private void FixedUpdate()
         {
@@ -44,7 +47,7 @@ namespace Assets.Code.Managers
         public void RestartRound()
         {
             // Decrement level so it sets us back to same level again
-            _level--;
+            Level--;
 
             // Start preparation again
             StartPreparation();
@@ -60,9 +63,11 @@ namespace Assets.Code.Managers
         {
             WaveStatus = WaveStatus.InProgress;
 
-            _waves[_level].Spawn();
+            _waves[Level].Spawn();
 
-            _level++;
+            WaveChanged?.Invoke(this, EventArgs.Empty);
+
+            Level++;
         }
     }
 }
