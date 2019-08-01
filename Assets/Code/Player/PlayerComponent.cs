@@ -7,14 +7,14 @@ namespace Assets.Code.Player
     [RequireComponent(typeof(DamageComponent))]
     public class PlayerComponent : MonoBehaviour
     {
-        private HealthComponent _healthComponent;
+        public HealthComponent HealthComponent;
         
         public event EventHandler Died;
 
         private void Awake()
         {
-            _healthComponent = GetComponent<HealthComponent>();
-            _healthComponent.Died += OnDeath;
+            HealthComponent = GetComponent<HealthComponent>();
+            HealthComponent.Died += OnDeath;
         }
 
         private void OnDeath(object sender, EventArgs e)
