@@ -9,7 +9,7 @@ namespace Assets.Code.Managers
     {
         public int StartingAmountOfLives;
 
-        private int _livesLeft;
+        [SerializeField] private int _livesLeft;
         public int LivesLeft
         {
             get => _livesLeft;
@@ -18,7 +18,7 @@ namespace Assets.Code.Managers
 
         [SerializeField] private PlayerComponent _player;
 
-        private int _score;
+        [SerializeField] private int _score;
         public int Score
         {
             get => _score;

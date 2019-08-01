@@ -1,6 +1,5 @@
 ﻿using System;
 using Assets.Code.Managers;
-using Assets.Code.Player;
 using UnityEngine;
 
 namespace Assets.Code.Enemy
@@ -9,6 +8,8 @@ namespace Assets.Code.Enemy
     [RequireComponent(typeof(DamageComponent))]
     public class EnemyComponent : MonoBehaviour
     {
+        public int ScoreWorth;
+
         private HealthComponent _healthComponent;
 
         private void Awake()
@@ -27,6 +28,7 @@ namespace Assets.Code.Enemy
 
         private void OnDeath(object sender, EventArgs e)
         {
+            PlayerManager.Instance.Score += ScoreWorth;
             Destroy(gameObject);
         }
 

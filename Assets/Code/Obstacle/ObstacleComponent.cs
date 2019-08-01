@@ -1,6 +1,5 @@
 ﻿using System;
 using Assets.Code.Managers;
-using Assets.Code.Player;
 using UnityEngine;
 
 namespace Assets.Code.Obstacle
@@ -9,6 +8,8 @@ namespace Assets.Code.Obstacle
     [RequireComponent(typeof(DamageComponent))]
     public class ObstacleComponent : MonoBehaviour
     {
+        public int ScoreWorth;
+
         private HealthComponent _healthComponent;
 
         private void Awake()
@@ -27,6 +28,7 @@ namespace Assets.Code.Obstacle
 
         private void OnDeath(object sender, EventArgs e)
         {
+            PlayerManager.Instance.Score += ScoreWorth;
             Destroy(gameObject);
         }
 

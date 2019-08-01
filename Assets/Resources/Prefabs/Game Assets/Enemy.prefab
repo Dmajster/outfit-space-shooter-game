@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ac331ee653b13438742f6641f9b396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreWorth: 20
 --- !u!114 &3222927661916836306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,8 +88,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e43cf764bfa1f4085ba11cbc799e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 5
+  MovementSpeed: 2
   TargetPosition: {x: 0, y: 0}
+  _targetReachedTolerance: 1
 --- !u!212 &1942466478629912054
 SpriteRenderer:
   m_ObjectHideFlags: 0
