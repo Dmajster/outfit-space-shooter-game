@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.Code.Managers;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -76,6 +77,19 @@ namespace Assets.Code.Wave_System
                 Mathf.Cos(radianAngle),
                 Mathf.Sin(radianAngle)
             );
+        }
+
+        protected Vector2 GetRandomDirectionInView(Vector3 position)
+        {
+            var targetPosition = GetRandomPositionInView();
+
+            var direction = new Vector3(
+                targetPosition.x - position.x,
+                targetPosition.y - position.y,
+                0
+            ).normalized;
+
+            return direction;
         }
     }
 }

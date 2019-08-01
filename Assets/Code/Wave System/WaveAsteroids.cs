@@ -11,8 +11,8 @@ namespace Assets.Code.Wave_System
         {
             for (var i = 0; i < ObstacleCount; i++)
             {
-                var position = GetRandomPositionInView();
-                var direction = GetRandomDirectionVector();
+                var position = GetRandomPositionOutsideView();
+                var direction = GetRandomDirectionInView(position);
 
                 var obstacleGameObject = GameObject.Instantiate(ObstaclePrefab, position, Quaternion.identity);
                 obstacleGameObject.GetComponent<ObstacleMovementComponent>().MovementDirection = direction;

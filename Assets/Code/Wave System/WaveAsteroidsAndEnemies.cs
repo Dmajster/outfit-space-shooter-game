@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using Assets.Code.Enemy;
 using Assets.Code.Obstacle;
 using Assets.Code.Player;
@@ -14,8 +13,8 @@ namespace Assets.Code.Wave_System
         {   
             for (var i = 0; i < ObstacleCount; i++)
             {
-                var position = GetRandomPositionInView();
-                var direction = GetRandomDirectionVector();
+                var position = GetRandomPositionOutsideView();
+                var direction = GetRandomDirectionInView(position);
 
                 var obstacleGameObject = GameObject.Instantiate(ObstaclePrefab, position, Quaternion.identity);
                 obstacleGameObject.GetComponent<ObstacleMovementComponent>().MovementDirection = direction;
@@ -25,8 +24,8 @@ namespace Assets.Code.Wave_System
 
             for (var i = 0; i < EnemyCount; i++)
             {
-                var position = GetRandomPositionInView();
-                var target = GetRandomPositionInView();
+                var position = GetRandomPositionOutsideView();
+                var target = GetRandomDirectionVector();
 
                 var enemyGameObject = GameObject.Instantiate(EnemyPrefab, position, Quaternion.identity);
                 var enemyMovementComponent = enemyGameObject.GetComponent<EnemyMovementComponent>();
