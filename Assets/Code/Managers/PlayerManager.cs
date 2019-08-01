@@ -9,6 +9,7 @@ namespace Assets.Code.Managers
     public class PlayerManager : Singleton<PlayerManager>
     {
         public int StartingAmountOfLives;
+        public int MaxAmountOfLives;
 
         [SerializeField] private int _livesLeft;
         public int LivesLeft
@@ -76,7 +77,7 @@ namespace Assets.Code.Managers
 
         private void OnLivesChanged(int value)
         {
-            _livesLeft = value;
+            _livesLeft = Mathf.Min(value, MaxAmountOfLives);
 
             LivesChanged?.Invoke(this, EventArgs.Empty);
         }

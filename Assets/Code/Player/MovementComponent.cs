@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Code.Managers;
+using UnityEngine;
 
 namespace Assets.Code.Player
 {
@@ -23,6 +24,12 @@ namespace Assets.Code.Player
 
             // Delta time to make it frame rate independent
             transform.position += (Vector3) movementInput * MovementSpeed * Time.deltaTime;
+
+            transform.position = new Vector3(
+                Mathf.Clamp(transform.position.x, ViewManager.Instance.MinimumView.x, ViewManager.Instance.MaximumView.x),
+                Mathf.Clamp(transform.position.y, ViewManager.Instance.MinimumView.y, ViewManager.Instance.MaximumView.y),
+                0
+            );
         }
 
         private void HandleOrientation()

@@ -945,6 +945,11 @@ PrefabInstance:
       propertyPath: StartingAmountOfLives
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8322166282880868892, guid: 184b440373ff01541be9d3a2969706e1,
+        type: 3}
+      propertyPath: MaxAmountOfLives
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 184b440373ff01541be9d3a2969706e1, type: 3}
 --- !u!1001 &5093801137449805744
@@ -1361,7 +1366,7 @@ PrefabInstance:
     - target: {fileID: 7940882177339058097, guid: 79c5e97a43cddb542b203df33d92d2f0,
         type: 3}
       propertyPath: _waves.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7940882177339058097, guid: 79c5e97a43cddb542b203df33d92d2f0,
         type: 3}
@@ -1483,5 +1488,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5301851734311161374, guid: 4678cbfcd2c5f744f9eb321dd3106f79,
         type: 3}
+    - target: {fileID: 7940882177339058097, guid: 79c5e97a43cddb542b203df33d92d2f0,
+        type: 3}
+      propertyPath: _waves.Array.data[4].ObstaclePrefab
+      value: 
+      objectReference: {fileID: 6841866004654199648, guid: ac77a7078ebea7c4d8696b8ce064a1e1,
+        type: 3}
+    - target: {fileID: 7940882177339058097, guid: 79c5e97a43cddb542b203df33d92d2f0,
+        type: 3}
+      propertyPath: _waves.Array.data[4].ObstacleCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7940882177339058097, guid: 79c5e97a43cddb542b203df33d92d2f0,
+        type: 3}
+      propertyPath: _waves.Array.data[4].EnemyPrefab
+      value: 
+      objectReference: {fileID: 2696137637998675951, guid: cecdbdf5beb8bf6459e2a0f5362606d4,
+        type: 3}
+    - target: {fileID: 7940882177339058097, guid: 79c5e97a43cddb542b203df33d92d2f0,
+        type: 3}
+      propertyPath: _waves.Array.data[4].EnemyCount
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79c5e97a43cddb542b203df33d92d2f0, type: 3}
