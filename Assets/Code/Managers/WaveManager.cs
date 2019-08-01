@@ -26,7 +26,8 @@ namespace Assets.Code.Managers
             new WaveAsteroids(),
             new WaveAsteroids(),
             new WaveAsteroidsAndEnemies(),
-            new WaveAsteroidsAndEnemies()
+            new WaveAsteroidsAndEnemies(),
+            new WaveCongaLine()
         };
 
         public event EventHandler WaveChanged;
