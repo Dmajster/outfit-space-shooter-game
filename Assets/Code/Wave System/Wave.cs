@@ -32,6 +32,37 @@ namespace Assets.Code.Wave_System
             );
         }
 
+        protected Vector3 GetRandomPositionOutsideView()
+        {
+            var view = ViewManager.Instance;
+            var maxDistance = 10f;
+
+            var positionVector = new Vector3();
+
+            var xSide = Random.Range(0, 2);
+            if (xSide == 0)
+            {
+                positionVector.x = Random.Range(view.MinimumView.x - maxDistance, view.MinimumView.x);
+            }
+            else
+            {
+                positionVector.x = Random.Range(view.MaximumView.x, view.MaximumView.x + maxDistance);
+            }
+
+            var ySide = Random.Range(0, 2);
+
+            if (ySide == 0)
+            {
+                positionVector.y = Random.Range(view.MinimumView.y - maxDistance, view.MinimumView.y);
+            }
+            else
+            {
+                positionVector.y = Random.Range(view.MaximumView.y, view.MaximumView.y + maxDistance);
+            }
+
+            return positionVector;
+        }
+
         protected Vector2 GetRandomDirectionVector()
         {
             // Pick a random angle to launch the meteor in

@@ -21,7 +21,6 @@ namespace Assets.Code.Player
 
         private void OnHealthChanged(object sender, EventArgs e)
         {
-            Debug.Log("pc health changed");
             if (HealthChanged == null)
             {
                 // This shouldn't happen.

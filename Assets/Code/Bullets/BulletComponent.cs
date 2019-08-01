@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Assets.Code.Managers;
+using UnityEngine;
 
 namespace Assets.Code.Bullets
 {
@@ -12,6 +14,7 @@ namespace Assets.Code.Bullets
         private void Start()
         {
             Destroy(gameObject, BulletLifespan);
+            PlayerManager.Instance.RoundRestarted += OnRoundRestarted;
         }
 
         private void Update()
@@ -33,6 +36,16 @@ namespace Assets.Code.Bullets
             // Call damage deal method on collided game object
             damageable.DealDamage(Damage);
 
+            Destroy(gameObject);
+        }
+
+        private void OnDestroy()
+        {
+            PlayerManager.Instance.RoundRestarted -= OnRoundRestarted;
+        }
+
+        private void OnRoundRestarted(object sender, EventArgs e)
+        {
             Destroy(gameObject);
         }
     }

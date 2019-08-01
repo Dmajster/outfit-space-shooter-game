@@ -61,7 +61,6 @@ namespace Assets.Code.Managers
 
         private void OnHealthChanged(object sender, EventArgs e)
         {
-            Debug.Log("pm works");
             HealthChanged?.Invoke(this, EventArgs.Empty);
         }
 
