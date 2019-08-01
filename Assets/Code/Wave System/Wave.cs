@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.Code.Managers;
+using Assets.Code.Player;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -81,7 +82,8 @@ namespace Assets.Code.Wave_System
 
         protected Vector2 GetRandomDirectionInView(Vector3 position)
         {
-            var targetPosition = GetRandomPositionInView();
+            var targetPosition = ViewManager.Instance.Center +
+                                 ViewManager.Instance.Dimensions / 3 * (Random.Range(0, 2) - 1);
 
             var direction = new Vector3(
                 targetPosition.x - position.x,

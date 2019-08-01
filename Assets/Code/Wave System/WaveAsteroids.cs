@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Code.Obstacle;
+using Assets.Code.Player;
 using UnityEngine;
 
 namespace Assets.Code.Wave_System

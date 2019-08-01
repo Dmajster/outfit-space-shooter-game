@@ -7,13 +7,24 @@ namespace Assets.Code.Player
         public GameObject BulletPrefab;
         public Transform BulletSpawn;
 
+        public float ShootingCooldown;
+        [SerializeField] private float _lastShootingTime;
+
         private void Update()
         {
-            if (Input.GetButtonDown("Shoot"))
+            if (!Input.GetButton("Shoot"))
             {
-                // Spawn a new bullet prefab at spawn location, rotation matches rotation of Player.
-                Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.Euler(transform.eulerAngles));
+                return;
             }
+
+            if (Time.time - _lastShootingTime < ShootingCooldown)
+            {
+                return;
+            }
+
+            // Spawn a new bullet prefab at spawn location, rotation matches rotation of Player.
+            Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.Euler(transform.eulerAngles));
+            _lastShootingTime = Time.time;
         }
     }
 }

@@ -69,8 +69,8 @@ namespace Assets.Code.Obstacle
         private void HandleIsInView()
         {
             // Basic bounding box check to determine if it's inside the view
-            _isInView = transform.position.x > _view.MinimumView.x && transform.position.x < _view.MaximumView.x &&
-                        transform.position.y > _view.MinimumView.y && transform.position.y < _view.MaximumView.y;
+            _isInView = transform.position.x >= _view.MinimumView.x && transform.position.x <= _view.MaximumView.x &&
+                        transform.position.y >= _view.MinimumView.y && transform.position.y <= _view.MaximumView.y;
             // Check if it's the first time it's entering the view
             if (_hasEnteredView || !_isInView)
             {
