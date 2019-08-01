@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2925555840628360392}
   - component: {fileID: 9035913205754159262}
+  - component: {fileID: 3506393986498861727}
+  - component: {fileID: 4604177819785591996}
   - component: {fileID: 3222927661916836306}
   - component: {fileID: 7753312392832783448}
-  - component: {fileID: 4604177819785591996}
   - component: {fileID: 1942466478629912054}
   - component: {fileID: 274422115}
   - component: {fileID: 6034717959229709666}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -50,6 +51,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreWorth: 20
+--- !u!114 &3506393986498861727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2696137637998675951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf44a2de170ba3419bd73b7e77f94ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  ShootCooldownTime: 1
+  BulletPrefab: {fileID: 6380920088825886264, guid: a6a30592a090e3c48958e48bc6d8e8cb,
+    type: 3}
+--- !u!114 &4604177819785591996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2696137637998675951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e43cf764bfa1f4085ba11cbc799e86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSpeed: 2
+  TargetPosition: {x: 0, y: 0}
+  StayStillTime: 1
+  _targetReachedTime: 0
+  _targetReachedTolerance: 1
 --- !u!114 &3222927661916836306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,21 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79347da6b28438948862f30e94aa6fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4604177819785591996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2696137637998675951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5e43cf764bfa1f4085ba11cbc799e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MovementSpeed: 2
-  TargetPosition: {x: 0, y: 0}
-  _targetReachedTolerance: 1
 --- !u!212 &1942466478629912054
 SpriteRenderer:
   m_ObjectHideFlags: 0

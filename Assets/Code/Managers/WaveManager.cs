@@ -17,6 +17,8 @@ namespace Assets.Code.Managers
         [SerializeField] private List<Wave> _waves = new List<Wave>()
         {
             new WaveAsteroids(),
+            new WaveAsteroids(),
+            new WaveAsteroidsAndEnemies(),
             new WaveAsteroidsAndEnemies()
         };
 

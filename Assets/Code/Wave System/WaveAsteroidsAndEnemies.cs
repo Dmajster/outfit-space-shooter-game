@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.Code.Enemy;
 using Assets.Code.Obstacle;
+using Assets.Code.Player;
 using UnityEngine;
 
 namespace Assets.Code.Wave_System
@@ -20,6 +21,8 @@ namespace Assets.Code.Wave_System
                 obstacleGameObject.GetComponent<ObstacleMovementComponent>().MovementDirection = direction;
             }
 
+            var player = GameObject.FindObjectOfType<PlayerComponent>();
+
             for (var i = 0; i < EnemyCount; i++)
             {
                 var position = GetRandomPositionInView();
@@ -29,6 +32,9 @@ namespace Assets.Code.Wave_System
                 var enemyMovementComponent = enemyGameObject.GetComponent<EnemyMovementComponent>();
                 enemyMovementComponent.TargetPosition = target;
                 enemyMovementComponent.TargetReached += OnEnemyReachedTarget;
+
+                var enemyShootingComponent = enemyGameObject.GetComponent<EnemyShootComponent>();
+                enemyShootingComponent.Target = player.gameObject;
             }
         }
 

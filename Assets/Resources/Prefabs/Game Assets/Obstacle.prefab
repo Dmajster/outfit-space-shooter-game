@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6841866004654199649}
   - component: {fileID: 6841866004654199676}
   - component: {fileID: 6841866004654199679}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Obstacle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementDirection: {x: 0, y: 0}
-  MovementVelocity: 150
+  MovementVelocity: 300
   Damage: 50
   MinAngularVelocity: 0
   MaxAngularVelocity: 150
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8866bb0be9cee484bbc6ca23f6fa80c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingHealth: 20
+  _startingHealth: 40
   _health: 0
 --- !u!114 &7464150072538085516
 MonoBehaviour:
