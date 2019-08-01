@@ -2,6 +2,7 @@
 using Assets.Code.Abstractions;
 using Assets.Code.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Code.Managers
 {
@@ -31,17 +32,13 @@ namespace Assets.Code.Managers
         public event EventHandler ScoreChanged;
         public event EventHandler LivesChanged;
         public event EventHandler HealthChanged;
+        public event EventHandler GameOver;
 
         private void Awake()
         {
             LivesLeft = StartingAmountOfLives;
 
             _player = FindObjectOfType<PlayerComponent>();
-            
-        }
-
-        private void Start()
-        {
             _player.Died += OnDeath;
             _player.HealthChanged += OnHealthChanged;
         }
@@ -49,6 +46,12 @@ namespace Assets.Code.Managers
         private void OnDeath(object sender, EventArgs e)
         {
             LivesLeft--;
+
+            if (LivesLeft < 0)
+            {
+                GameOver?.Invoke(this, EventArgs.Empty);
+                return;
+            }
 
             if (RoundRestarted == null)
             {

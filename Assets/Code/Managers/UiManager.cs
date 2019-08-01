@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Assets.Code.Abstractions;
 using UnityEngine;
@@ -15,6 +16,9 @@ namespace Assets.Code.Managers
         public RectTransform HeartParent;
         public GameObject HeartPrefab;
 
+        public Text GameOver;
+        public Text YouWin;
+
         public float HeartGapRight;
         public float HeartGapTop;
         public float HeartGapBetween;
@@ -26,12 +30,35 @@ namespace Assets.Code.Managers
             PlayerManager.Instance.ScoreChanged += OnScoreChange;
             PlayerManager.Instance.LivesChanged += OnLivesChange;
             PlayerManager.Instance.HealthChanged += OnHealthChange;
+            PlayerManager.Instance.GameOver += OnGameOver;
             WaveManager.Instance.WaveChanged += OnWaveChange;
+            WaveManager.Instance.YouWin += OnYouWin;
 
             OnScoreChange(this,EventArgs.Empty);
             OnHealthChange(this, EventArgs.Empty);
             OnLivesChange(this, EventArgs.Empty);
             OnWaveChange(this, EventArgs.Empty);
+        }
+
+        private void OnGameOver(object sender, EventArgs e)
+        {
+            Debug.Log("Game Over!");
+            GameOver.gameObject.SetActive(true);
+            StartCoroutine(ExitGame());
+        }
+
+        private IEnumerator ExitGame()
+        {
+            yield return new WaitForSeconds(5);
+
+            Application.Quit();
+        }
+
+        private void OnYouWin(object sender, EventArgs e)
+        {
+            Debug.Log("You Win!");
+            YouWin.gameObject.SetActive(true);
+            StartCoroutine(ExitGame());
         }
 
         private void OnScoreChange(object sender, EventArgs e)

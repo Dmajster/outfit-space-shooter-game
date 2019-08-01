@@ -1,6 +1,5 @@
 ﻿using System;
 using Assets.Code.Managers;
-using Assets.Code.Player;
 using UnityEngine;
 
 namespace Assets.Code
@@ -25,6 +24,20 @@ namespace Assets.Code
             SetInitialHealth();
 
             PlayerManager.Instance.RoundRestarted += OnRoundRestarted;
+        }
+
+        private void Update()
+        {
+            HandleOutOfBounds();
+        }
+
+        private void HandleOutOfBounds()
+        {
+            if (Vector2.Distance(transform.position, Vector2.zero) > 50)
+            {
+                Debug.Log(transform.name);
+                Health = 0;
+            }
         }
 
         private void SetInitialHealth()

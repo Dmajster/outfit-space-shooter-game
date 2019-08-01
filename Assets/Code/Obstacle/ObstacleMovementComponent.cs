@@ -65,7 +65,6 @@ namespace Assets.Code.Obstacle
             damageable.DealDamage(Damage);
         }
 
-
         private void HandleIsInView()
         {
             // Basic bounding box check to determine if it's inside the view

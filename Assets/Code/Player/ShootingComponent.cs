@@ -10,6 +10,9 @@ namespace Assets.Code.Player
         public float ShootingCooldown;
         [SerializeField] private float _lastShootingTime;
 
+        public bool SuperGun;
+        public float SuperGunSpread;
+
         private void Update()
         {
             if (!Input.GetButton("Shoot"))
@@ -24,6 +27,13 @@ namespace Assets.Code.Player
 
             // Spawn a new bullet prefab at spawn location, rotation matches rotation of Player.
             Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.Euler(transform.eulerAngles));
+
+            if (SuperGun)
+            {
+                Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.Euler(transform.eulerAngles + Vector3.forward * SuperGunSpread));
+                Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.Euler(transform.eulerAngles - Vector3.forward * SuperGunSpread));
+            }
+
             _lastShootingTime = Time.time;
         }
     }

@@ -15,8 +15,11 @@ namespace Assets.Code.Managers
         [Header("Wave settings")] public WaveStatus WaveStatus;
         public int Level;
 
+        public event EventHandler YouWin;
+
         public GameObject HeartPrefab;
         public GameObject HealthPrefab;
+        public GameObject SuperGunPrefab;
 
         [SerializeField] private List<Wave> _waves = new List<Wave>()
         {
@@ -45,6 +48,11 @@ namespace Assets.Code.Managers
 
                 if (enemies.Length == 0)
                 {
+                    if (Level == _waves.Count)
+                    {
+                        YouWin?.Invoke(this,EventArgs.Empty);
+                        return;
+                    }
                     StartPreparation();
                 }
             }
@@ -91,6 +99,10 @@ namespace Assets.Code.Managers
             else if (rng < 90)
             {
                 Instantiate(HeartPrefab, gameObject.transform.position, Quaternion.identity);
+            }
+            else if (rng < 95)
+            {
+                Instantiate(SuperGunPrefab, gameObject.transform.position, Quaternion.identity);
             }
         }
     }
