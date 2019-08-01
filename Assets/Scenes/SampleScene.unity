@@ -440,11 +440,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031129606}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: -0.97, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &1122103188
 GameObject:
@@ -475,7 +475,7 @@ Transform:
   m_Children:
   - {fileID: 945739367}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1223062021 stripped
 MonoBehaviour:
@@ -605,12 +605,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604044136}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.97, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1604044140
 MonoBehaviour:
@@ -825,6 +825,10 @@ PrefabInstance:
       propertyPath: m_FalloffIntensity
       value: 0.808
       objectReference: {fileID: 0}
+    - target: {fileID: 863900655, guid: 0f505e9d3b5488e408a3b3b1c9d32005, type: 3}
+      propertyPath: m_UseNormalMap
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6025256400364187229, guid: 0f505e9d3b5488e408a3b3b1c9d32005,
         type: 3}
       propertyPath: ShootingCooldown
@@ -834,6 +838,10 @@ PrefabInstance:
         type: 3}
       propertyPath: _startingHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 50216451, guid: 0f505e9d3b5488e408a3b3b1c9d32005, type: 3}
+      propertyPath: m_UseNormalMap
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f505e9d3b5488e408a3b3b1c9d32005, type: 3}
@@ -1522,5 +1530,17 @@ PrefabInstance:
       propertyPath: _waves.Array.data[3].EnemyCount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7940882177339058097, guid: 79c5e97a43cddb542b203df33d92d2f0,
+        type: 3}
+      propertyPath: HeartPrefab
+      value: 
+      objectReference: {fileID: 4621705066334385446, guid: 23840ff697e866e4eb0ab46eb7e41af9,
+        type: 3}
+    - target: {fileID: 7940882177339058097, guid: 79c5e97a43cddb542b203df33d92d2f0,
+        type: 3}
+      propertyPath: HealthPrefab
+      value: 
+      objectReference: {fileID: 680469196438103617, guid: 72ae2c2791bb96540b7513d36395523a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79c5e97a43cddb542b203df33d92d2f0, type: 3}

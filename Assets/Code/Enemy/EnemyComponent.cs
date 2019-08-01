@@ -29,6 +29,9 @@ namespace Assets.Code.Enemy
         private void OnDeath(object sender, EventArgs e)
         {
             PlayerManager.Instance.Score += ScoreWorth;
+
+            WaveManager.Instance.SpawnPowerup(this.gameObject);
+
             Destroy(gameObject);
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Assets.Code.Abstractions;
 using Assets.Code.Wave_System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Assets.Code.Managers
 {
@@ -13,6 +14,9 @@ namespace Assets.Code.Managers
 
         [Header("Wave settings")] public WaveStatus WaveStatus;
         public int Level;
+
+        public GameObject HeartPrefab;
+        public GameObject HealthPrefab;
 
         [SerializeField] private List<Wave> _waves = new List<Wave>()
         {
@@ -70,6 +74,24 @@ namespace Assets.Code.Managers
             WaveChanged?.Invoke(this, EventArgs.Empty);
 
             Level++;
+        }
+
+        public void SpawnPowerup(GameObject gameObject)
+        {
+            var rng = Random.Range(0, 100);
+
+            if (rng < 70)
+            {
+                return;
+            }
+            else if (rng < 80)
+            {
+                Instantiate(HealthPrefab, gameObject.transform.position, Quaternion.identity);
+            }
+            else if (rng < 90)
+            {
+                Instantiate(HeartPrefab, gameObject.transform.position, Quaternion.identity);
+            }
         }
     }
 }

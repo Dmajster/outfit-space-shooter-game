@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using Assets.Code.Managers;
-using Assets.Code.Player;
-using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,8 +13,6 @@ namespace Assets.Code.Wave_System
 
         public GameObject EnemyPrefab;
         public int EnemyCount;
-
-        private List<GameObject> _enemies;
 
         public virtual void Spawn()
         {
