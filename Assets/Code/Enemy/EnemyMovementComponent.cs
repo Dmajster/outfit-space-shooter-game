@@ -8,7 +8,7 @@ namespace Assets.Code.Enemy
         public float MovementSpeed;
         public Vector2 TargetPosition;
 
-        public int StayStillTime = 1;
+        public float StayStillTime = 0.5f;
 
         public event EventHandler TargetReached;
         [SerializeField] private float _targetReachedTime;

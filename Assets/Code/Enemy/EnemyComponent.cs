@@ -12,10 +12,14 @@ namespace Assets.Code.Enemy
 
         private HealthComponent _healthComponent;
 
+        private AudioSource _deathAudioSource;
+
         private void Awake()
         {
             _healthComponent = GetComponent<HealthComponent>();
             _healthComponent.Died += OnDeath;
+
+            _deathAudioSource = GetComponent<AudioSource>();
 
             PlayerManager.Instance.RoundRestarted += OnRoundRestarted;
         }
@@ -31,6 +35,8 @@ namespace Assets.Code.Enemy
             PlayerManager.Instance.Score += ScoreWorth;
 
             WaveManager.Instance.SpawnPowerup(this.gameObject);
+
+            _deathAudioSource.Play();
 
             Destroy(gameObject);
         }

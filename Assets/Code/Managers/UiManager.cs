@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Code.Abstractions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Code.Managers
@@ -19,6 +20,13 @@ namespace Assets.Code.Managers
         public Text GameOver;
         public Text YouWin;
 
+        public GameObject PausePanel;
+        public GameObject OptionsPanel;
+        public Slider MusicLoudnessSlider;
+
+        public bool GameIsPaused;
+        public float GameInitialTimeScale;
+
         public float HeartGapRight;
         public float HeartGapTop;
         public float HeartGapBetween;
@@ -34,10 +42,12 @@ namespace Assets.Code.Managers
             WaveManager.Instance.WaveChanged += OnWaveChange;
             WaveManager.Instance.YouWin += OnYouWin;
 
-            OnScoreChange(this,EventArgs.Empty);
+            OnScoreChange(this, EventArgs.Empty);
             OnHealthChange(this, EventArgs.Empty);
             OnLivesChange(this, EventArgs.Empty);
             OnWaveChange(this, EventArgs.Empty);
+
+            GameInitialTimeScale = Time.timeScale;
         }
 
         private void OnGameOver(object sender, EventArgs e)
@@ -89,12 +99,53 @@ namespace Assets.Code.Managers
                 var hearthRectTransform = heart.GetComponent<RectTransform>();
 
                 hearthRectTransform.SetParent(HeartParent);
-                hearthRectTransform.anchoredPosition = - new Vector2(
+                hearthRectTransform.anchoredPosition = -new Vector2(
                     HeartGapRight + i * HeartGapBetween,
                     HeartGapTop
                 );
 
                 _hearts.Add(heart);
+            }
+        }
+
+        public void OnPauseMenuOptionsButtonClicked()
+        {
+            Debug.Log("Pause panel");
+            OptionsPanel.gameObject.SetActive(true);
+            PausePanel.gameObject.SetActive(false);
+        }
+
+        public void OnMusicLoudnessChanged()
+        {
+            SoundManager.Instance.MusicSource.volume = MusicLoudnessSlider.value;
+        }
+
+        public void OnResumePressed()
+        {
+            GameIsPaused = !GameIsPaused;
+        }
+
+        public void OnQuitPressed()
+        {
+            SceneManager.LoadScene(0);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                GameIsPaused = !GameIsPaused;
+                Time.timeScale = GameIsPaused ? 0 : GameInitialTimeScale;
+
+                if (GameIsPaused)
+                {
+                    PausePanel.gameObject.SetActive(GameIsPaused);
+                }
+                else
+                {
+                    PausePanel.gameObject.SetActive(GameIsPaused);
+                    OptionsPanel.gameObject.SetActive(GameIsPaused);
+                }
             }
         }
     }

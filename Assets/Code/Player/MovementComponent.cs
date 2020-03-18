@@ -9,6 +9,11 @@ namespace Assets.Code.Player
 
         private void Update()
         {
+            if (Time.timeScale == 0)
+            {  
+                return;
+            }
+
             HandleMovement();
             HandleOrientation();
         }
@@ -47,7 +52,7 @@ namespace Assets.Code.Player
             var mouseAngle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
 
             // Mouse angle on Z because 2D uses Z axis for rotation
-            transform.rotation = Quaternion.Euler(0, 0, mouseAngle);
+            transform.rotation = Quaternion.Euler(0, 0, mouseAngle - 90);
         }
     }
 }

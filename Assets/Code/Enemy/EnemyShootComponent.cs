@@ -19,12 +19,13 @@ namespace Assets.Code.Enemy
                 return;
             }
 
+            HandleOrientation();
+
             if (Time.time - _lastShootTime < ShootCooldownTime)
             {
                 return;
             }
 
-            HandleOrientation();
             HandleShooting();
         }
 
@@ -40,14 +41,14 @@ namespace Assets.Code.Enemy
             var mouseAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
 
             // Mouse angle on Z because 2D uses Z axis for rotation
-            transform.rotation = Quaternion.Euler(0, 0, mouseAngle);
+            transform.rotation = Quaternion.Euler(0, 0, mouseAngle + 90);
         }
 
         private void HandleShooting()
         {
             _lastShootTime = Time.time;
 
-            Instantiate(BulletPrefab, transform.position, Quaternion.Euler(transform.eulerAngles));
+            Instantiate(BulletPrefab, transform.position, Quaternion.Euler(transform.eulerAngles - Vector3.forward * 90));
         }
     }
 }

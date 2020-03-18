@@ -12,8 +12,11 @@ namespace Assets.Code.Obstacle
 
         private HealthComponent _healthComponent;
 
+        private AudioSource _deathAudioSource;
+
         private void Awake()
         {
+            _deathAudioSource = GetComponent<AudioSource>();
             _healthComponent = GetComponent<HealthComponent>();
             _healthComponent.Died += OnDeath;
 
@@ -31,6 +34,8 @@ namespace Assets.Code.Obstacle
             PlayerManager.Instance.Score += ScoreWorth;
 
             WaveManager.Instance.SpawnPowerup(this.gameObject);
+
+            _deathAudioSource.Play();
 
             Destroy(gameObject);
         }

@@ -44,9 +44,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Score: {fileID: 0}
+  Health: {fileID: 0}
+  Wave: {fileID: 0}
   HeartParent: {fileID: 0}
   HeartPrefab: {fileID: 8624995747406444749, guid: e3f6db246178c814f94d6ca7fc0d2341,
     type: 3}
-  HeartGapRight: 32
-  HeartGapTop: 32
-  HeartGapBetween: 32
+  GameOver: {fileID: 0}
+  YouWin: {fileID: 0}
+  PausePanel: {fileID: 0}
+  OptionsPanel: {fileID: 0}
+  MusicLoudnessSlider: {fileID: 0}
+  GameIsPaused: 0
+  GameInitialTimeScale: 0
+  HeartGapRight: 64
+  HeartGapTop: 64
+  HeartGapBetween: 80

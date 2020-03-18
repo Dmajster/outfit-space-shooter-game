@@ -11,6 +11,8 @@ namespace Assets.Code.Bullets
 
         public float BulletLifespan;
 
+        public GameObject DestroyEffect;
+
         private void Start()
         {
             Destroy(gameObject, BulletLifespan);
@@ -37,6 +39,11 @@ namespace Assets.Code.Bullets
             damageable.DealDamage(Damage);
 
             Destroy(gameObject);
+
+            if (DestroyEffect != null)
+            {
+                Instantiate(DestroyEffect, transform.position, Quaternion.identity);
+            }
         }
 
         private void OnDestroy()
